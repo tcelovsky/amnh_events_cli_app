@@ -25,6 +25,9 @@ def self.scrape_events
   event_1.detailed_description = "Swirling disks of dust and gas surround young stars, and these disks contain the building blocks for new planets. It would take 100 million years to see a planet fully form, but luckily there are plenty of planetary systems in development for us to observe. By studying and compiling “snapshots” from nearby stars, Alycia Weinberger takes us on a journey back in time to the origins of planets."
 
   @@all
+
+  doc = Nokogiri::HTML(open("https://www.amnh.org/calendar?facetsearch=1"))
+
 end
 
 end

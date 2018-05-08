@@ -13,7 +13,7 @@ class AmnhEventsCliApp::CLI
     puts "2. Members Programs"
     puts "3. Courses and Workshops"
     puts "4. After Hours Programs"
-    @events = AmnhEvents::Events.list
+    @events = AmnhEventsCliApp::Events.list
   end
 
   def menu

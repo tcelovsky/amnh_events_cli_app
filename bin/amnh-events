@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-require './lib/amnh_events_cli_app'
+require './lib/environment'
 
 AmnhEventsCliApp::CLI.new.call

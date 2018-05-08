@@ -1,5 +1,6 @@
 class AmnhEventsCliApp::Events
 attr_accessor :name, :type, :date, :short_description, :url, :time, :location, :tickets, :detailed_description
+@@all = []
 
 def self.list
   self.scrape_events
@@ -11,7 +12,8 @@ def self.list
 end
 
 def self.scrape_events
-  event_1 = self.new
+
+  @@all << event_1 = self.new
   event_1.name = "Frontiers Lecture: Planetary Origin Stories"
   event_1.type = "LECTURES AND TALKS"
   event_1.date = "Monday, May 14, 2018"
@@ -22,7 +24,7 @@ def self.scrape_events
   event_1.tickets = "$15 ($13.50 seniors, students); $12 Members"
   event_1.detailed_description = "Swirling disks of dust and gas surround young stars, and these disks contain the building blocks for new planets. It would take 100 million years to see a planet fully form, but luckily there are plenty of planetary systems in development for us to observe. By studying and compiling “snapshots” from nearby stars, Alycia Weinberger takes us on a journey back in time to the origins of planets."
 
-  [event_1]
+  @@all
 end
 
 end

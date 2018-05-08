@@ -1,5 +1,5 @@
 class AmnhEventsCliApp::CLI
-attr_accessor :events
+attr_accessor :events, :type
 
   def call
     puts "Welcome!"

@@ -1,4 +1,5 @@
 class AmnhEventsCliApp::CLI
+attr_accessor :events
 
   def call
     puts "Welcome!"
@@ -7,8 +8,14 @@ class AmnhEventsCliApp::CLI
     goodbye
   end
 
-  def list_events
+  def events
     @events = AmnhEventsCliApp::Events.list
+  end
+
+  def list_events
+    events.each.with_index(1) do [event, i]
+      puts "#{i}. #{event.type}"
+    end
   end
 
   def menu

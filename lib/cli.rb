@@ -13,6 +13,7 @@ class AmnhEventsCliApp::CLI
     puts "2. Members Programs"
     puts "3. Courses and Workshops"
     puts "4. After Hours Programs"
+    @events = AmnhEvents::Events.list
   end
 
   def menu
@@ -29,6 +30,8 @@ class AmnhEventsCliApp::CLI
       puts "More information on event 3..."
     when "4"
       puts "More information on event 4..."
+    when "list"
+      list_events
     else puts "Type 'list' to see list of events again or type 'exit':"
     end
     end

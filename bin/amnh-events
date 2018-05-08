@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 require './lib/amnh_events_cli_app'
 
+puts "Welcome!"
+
 AmnhEventsCliApp::CLI.new.call
 
 def call

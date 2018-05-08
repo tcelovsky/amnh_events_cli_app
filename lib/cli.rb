@@ -13,7 +13,7 @@ attr_accessor :events
   end
 
   def list_events
-    events.each.with_index(1) do [event, i]
+    events.each.with_index(1) do |event, i|
       puts "#{i}. #{event.type}"
     end
   end

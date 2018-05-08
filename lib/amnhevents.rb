@@ -2,7 +2,7 @@ class AmnhEventsCliApp::Events
 attr_accessor :name, :type, :date, :short_description, :url, :time, :location, :tickets, :detailed_description
 
 def self.list
-  puts "Here are the types of upcoming events at the American Museum of Natural History (AMNH):"
+  puts "Here are types of upcoming events at the American Museum of Natural History (AMNH):"
   puts "1. LECTURES AND TALKS"
   puts "2. MEMBERS PROGRAMS"
   puts "3. COURSES AND WORKSHOPS"

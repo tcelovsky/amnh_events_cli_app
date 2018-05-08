@@ -8,7 +8,6 @@ class AmnhEventsCliApp::CLI
   end
 
   def list_events
-    puts "Here are upcoming events at the American Museum of Natural History (AMNH):"
     @events = AmnhEventsCliApp::Events.list
   end
 

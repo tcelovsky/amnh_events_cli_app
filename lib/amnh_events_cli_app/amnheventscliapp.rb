@@ -4,14 +4,11 @@ attr_accessor :name, :type, :date, :short_description, :url, :time, :location, :
 
 def self.list
   self.scrape_events
-  puts "1. LECTURES AND TALKS"
-  puts "2. MEMBERS PROGRAMS"
-  puts "3. COURSES AND WORKSHOPS"
-  puts "4. AFTER HOURS PROGRAMS"
-  puts "5. SPECIAL EVENTS"
-  # events.each.with_index(1) do |event, i|
-  #   puts "#{i}. #{event.type}"
-  # end
+  # puts "1. LECTURES AND TALKS"
+  # puts "2. MEMBERS PROGRAMS"
+  # puts "3. COURSES AND WORKSHOPS"
+  # puts "4. AFTER HOURS PROGRAMS"
+  # puts "5. SPECIAL EVENTS"
 end
 
 def self.scrape_events
@@ -26,10 +23,10 @@ def self.scrape_events
   event_1.location = "Enter at 81st Street"
   event_1.tickets = "$15 ($13.50 seniors, students); $12 Members"
   event_1.detailed_description = "Swirling disks of dust and gas surround young stars, and these disks contain the building blocks for new planets. It would take 100 million years to see a planet fully form, but luckily there are plenty of planetary systems in development for us to observe. By studying and compiling “snapshots” from nearby stars, Alycia Weinberger takes us on a journey back in time to the origins of planets."
+  array = []
+  array << event_1
 
-  [event_1]
-
-  doc = Nokogiri::HTML(open("https://www.amnh.org/calendar?facetsearch=1"))
+  # doc = Nokogiri::HTML(open("https://www.amnh.org/calendar?facetsearch=1"))
 
 end
 

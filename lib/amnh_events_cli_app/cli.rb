@@ -10,14 +10,14 @@ attr_accessor :events, :type
 
   def events
     @events = AmnhEventsCliApp::Events.list
+    @events.each.with_index(1) do |event, i|
+      puts "#{i}. #{event.type}"
+    end
   end
 
   def list_events
     puts "Here are types of upcoming events at the American Museum of Natural History (AMNH):"
     events
-    # events.each.with_index(1) do |event, i|
-    #   puts "#{i}. #{event.type}"
-    # end
   end
 
   def menu

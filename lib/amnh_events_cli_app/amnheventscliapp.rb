@@ -4,11 +4,11 @@ attr_accessor :name, :type, :date, :short_description, :url, :time, :location, :
 
 def self.list
   self.scrape_events
-  # puts "1. LECTURES AND TALKS"
-  # puts "2. MEMBERS PROGRAMS"
-  # puts "3. COURSES AND WORKSHOPS"
-  # puts "4. AFTER HOURS PROGRAMS"
-  # puts "5. SPECIAL EVENTS"
+  puts "1. LECTURES AND TALKS"
+  puts "2. MEMBERS PROGRAMS"
+  puts "3. COURSES AND WORKSHOPS"
+  puts "4. AFTER HOURS PROGRAMS"
+  puts "5. SPECIAL EVENTS"
 end
 
 def self.scrape_events

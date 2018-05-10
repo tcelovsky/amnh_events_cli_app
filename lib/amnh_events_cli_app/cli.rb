@@ -14,8 +14,10 @@ attr_accessor :events, :type
 
   def list_events
     puts "Here are types of upcoming events at the American Museum of Natural History (AMNH):"
-    events.each.with_index(1) do |event, i|
+    i = 1
+    events.each do |event, i|
       puts "#{i}. #{event.type}"
+      i += 1
     end
   end
 

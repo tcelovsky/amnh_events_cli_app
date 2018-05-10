@@ -9,11 +9,14 @@ def self.list
   puts "3. COURSES AND WORKSHOPS"
   puts "4. AFTER HOURS PROGRAMS"
   puts "5. SPECIAL EVENTS"
+  # events.each.with_index(1) do |event, i|
+  #   puts "#{i}. #{event.type}"
+  # end
 end
 
 def self.scrape_events
 
-  @@all << event_1 = self.new
+  event_1 = self.new
   event_1.name = "Frontiers Lecture: Planetary Origin Stories"
   event_1.type = "LECTURES AND TALKS"
   event_1.date = "Monday, May 14, 2018"
@@ -24,7 +27,7 @@ def self.scrape_events
   event_1.tickets = "$15 ($13.50 seniors, students); $12 Members"
   event_1.detailed_description = "Swirling disks of dust and gas surround young stars, and these disks contain the building blocks for new planets. It would take 100 million years to see a planet fully form, but luckily there are plenty of planetary systems in development for us to observe. By studying and compiling “snapshots” from nearby stars, Alycia Weinberger takes us on a journey back in time to the origins of planets."
 
-  @@all
+  [event_1]
 
   doc = Nokogiri::HTML(open("https://www.amnh.org/calendar?facetsearch=1"))
 

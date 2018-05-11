@@ -29,14 +29,6 @@ attr_accessor :events, :type
           puts "#{event.date}"
           # puts "#{event.short_description}"
           puts "Type 'list' to see available types of events again or type 'exit':"
-        # elsif input == "tickets"
-        #   puts
-        #   puts "#{event.tickets}"
-        #   puts
-        # elsif input == "description"
-        #   puts
-        #   puts "#{event.detailed_description}"
-        #   puts
       elsif input == "list"
         list_events
       else puts "Type 'list' to see available types of events again or type 'exit':"

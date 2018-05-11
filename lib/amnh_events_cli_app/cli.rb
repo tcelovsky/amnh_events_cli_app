@@ -20,7 +20,6 @@ attr_accessor :events
 
   def menu
     input = nil
-    
     while input != "exit"
       input = gets.strip.downcase
       if input.to_i.between?(1, AmnhEventsCliApp::Events.list_types.length)

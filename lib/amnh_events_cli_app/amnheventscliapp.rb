@@ -6,15 +6,14 @@ def self.all
   @@all
 end
 
-def self.list
-  self.make_events.each.with_index(1) do |event, i|
-    puts "#{i}. #{event.type}"
-  end
-  # puts "1. LECTURES AND TALKS"
-  # puts "2. MEMBERS PROGRAMS"
-  # puts "3. COURSES AND WORKSHOPS"
-  # puts "4. AFTER HOURS PROGRAMS"
-  # puts "5. SPECIAL EVENTS"
+def self.get_page
+  @doc = Nokogiri::HTML(open("https://www.amnh.org/calendar?facetsearch=1"))
+  # binding.pry
+end
+
+def self.get_events
+  self.get_page.css(".mod").first
+  # binding.pry
 end
 
 def self.make_events
@@ -30,14 +29,15 @@ def self.make_events
   # binding.pry
 end
 
-def self.get_page
-  @doc = Nokogiri::HTML(open("https://www.amnh.org/calendar?facetsearch=1"))
-  # binding.pry
-end
-
-def self.get_events
-  self.get_page.css(".mod").first
-  # binding.pry
+def self.list
+  self.make_events.each.with_index(1) do |event, i|
+    puts "#{i}. #{event.type}"
+  end
+  # puts "1. LECTURES AND TALKS"
+  # puts "2. MEMBERS PROGRAMS"
+  # puts "3. COURSES AND WORKSHOPS"
+  # puts "4. AFTER HOURS PROGRAMS"
+  # puts "5. SPECIAL EVENTS"
 end
 
 end

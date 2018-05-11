@@ -2,8 +2,17 @@ class AmnhEventsCliApp::Events
 attr_accessor :event, :name, :type, :date, :short_description, :url, :time, :location, :tickets, :detailed_description
 @@all = []
 
+def all
+  @@all
+end
+
 def self.list
   self.make_events
+  AmnhEventsCliApp::Events.all.each do |event|
+    if event.name
+      puts "#{event.name}"
+    end
+  end
   # puts "1. LECTURES AND TALKS"
   # puts "2. MEMBERS PROGRAMS"
   # puts "3. COURSES AND WORKSHOPS"
@@ -13,7 +22,7 @@ end
 
 def self.make_events
   self.get_events.each do |post|
-    @@all << event = Event.new
+    @@all << event = AmnhEventsCliApp::Events.new
     event.name = doc.css(".mod").first.css("a").text
     event.short_description = doc.css(".mod").first.css("p").text
     event.date = doc.css(".mod").first.css("p.date").text
@@ -32,6 +41,7 @@ def self.make_events
   # event_1.location = "Enter at 81st Street"
   # event_1.tickets = "$15 ($13.50 seniors, students); $12 Members"
   # event_1.detailed_description = "Swirling disks of dust and gas surround young stars, and these disks contain the building blocks for new planets. It would take 100 million years to see a planet fully form, but luckily there are plenty of planetary systems in development for us to observe. By studying and compiling “snapshots” from nearby stars, Alycia Weinberger takes us on a journey back in time to the origins of planets."
+
   @@all
 end
 
@@ -43,17 +53,5 @@ end
 def self.get_events
   self.get_page.css(".mod part event")
 end
-
-# def make_events
-#   self.get_events.each do |post|
-#     event = Event.new
-#     event.name = post.css("h1 a").text
-#     event.short_description = post.css("").text
-#     event.date = post.css("p.date").text
-#     event.time = post.css("").text
-#     event.type = post.css("p.category").text
-#     event.detailed_description = post.css("").text
-#   end
-# end
 
 end

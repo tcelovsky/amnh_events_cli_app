@@ -4,7 +4,9 @@ attr_accessor :event, :name, :type, :date, :short_description, :url, :time, :loc
 
 
 def self.list
-  self.make_events
+  self.make_events.each.with_index(1) do |event, i|
+    puts "#{i}. #{type}"
+  end
   # puts "1. LECTURES AND TALKS"
   # puts "2. MEMBERS PROGRAMS"
   # puts "3. COURSES AND WORKSHOPS"

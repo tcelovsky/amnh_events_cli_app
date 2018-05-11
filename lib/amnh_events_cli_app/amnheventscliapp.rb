@@ -1,4 +1,5 @@
 class AmnhEventsCliApp::Events
+extend Concerns::Findable
 attr_accessor :event, :name, :type, :date, :short_description, :url, :time, :location, :tickets, :detailed_description
 @@all = []
 

@@ -3,7 +3,7 @@ attr_accessor :event, :name, :type, :date, :short_description, :url, :time, :loc
 @@all = []
 
 def self.list
-  self.scrape_events
+  self.make_events
   # puts "1. LECTURES AND TALKS"
   # puts "2. MEMBERS PROGRAMS"
   # puts "3. COURSES AND WORKSHOPS"
@@ -11,44 +11,49 @@ def self.list
   # puts "5. SPECIAL EVENTS"
 end
 
-def self.scrape_events
+def self.make_events
+  self.get_events.each do |post|
+    @@all << event = Event.new
+    event.name = doc.css(".mod").first.css("a").text
+    event.short_description = doc.css(".mod").first.css("p").text
+    event.date = doc.css(".mod").first.css("p.date").text
+    event.time = post.css("").text
+    event.type = doc.css(".mod").first.css("p.category").text
+    event.detailed_description = post.css("").text
+  end
 
-  @@all << event_1 = self.new
-  event_1.name = "Frontiers Lecture: Planetary Origin Stories"
-  event_1.type = "LECTURES AND TALKS"
-  event_1.date = "Monday, May 14, 2018"
-  event_1.short_description = "By studying and compiling “snapshots” from nearby stars, Alycia Weinberger takes us on a journey back in time to the origins of planets."
-  event_1.url = "https://www.amnh.eorg/calendar/frontiers-lecture-planetary-origin-stories"
-  event_1.time = "7:30 pm"
-  event_1.location = "Enter at 81st Street"
-  event_1.tickets = "$15 ($13.50 seniors, students); $12 Members"
-  event_1.detailed_description = "Swirling disks of dust and gas surround young stars, and these disks contain the building blocks for new planets. It would take 100 million years to see a planet fully form, but luckily there are plenty of planetary systems in development for us to observe. By studying and compiling “snapshots” from nearby stars, Alycia Weinberger takes us on a journey back in time to the origins of planets."
+  # @@all << event_1 = self.new
+  # event_1.name = "Frontiers Lecture: Planetary Origin Stories"
+  # event_1.type = "LECTURES AND TALKS"
+  # event_1.date = "Monday, May 14, 2018"
+  # event_1.short_description = "By studying and compiling “snapshots” from nearby stars, Alycia Weinberger takes us on a journey back in time to the origins of planets."
+  # event_1.url = "https://www.amnh.eorg/calendar/frontiers-lecture-planetary-origin-stories"
+  # event_1.time = "7:30 pm"
+  # event_1.location = "Enter at 81st Street"
+  # event_1.tickets = "$15 ($13.50 seniors, students); $12 Members"
+  # event_1.detailed_description = "Swirling disks of dust and gas surround young stars, and these disks contain the building blocks for new planets. It would take 100 million years to see a planet fully form, but luckily there are plenty of planetary systems in development for us to observe. By studying and compiling “snapshots” from nearby stars, Alycia Weinberger takes us on a journey back in time to the origins of planets."
   @@all
 end
 
-def get_page
+def self.get_page
   doc = Nokogiri::HTML(open("https://www.amnh.org/calendar?facetsearch=1"))
   # binding.pry
-
-  #name = doc.search("h1 a").text
-  #date = doc.search("p.date").text
-  #type = doc.search("p.category").text
 end
 
-def get_events
-  self.get_page(".page-title")
+def self.get_events
+  self.get_page.css(".mod part event")
 end
 
-def make_events
-  self.get_events.each do |post|
-    event = Event.new
-    event.name = post.css("h1 a").text
-    event.short_description = post.css("").text
-    event.date = post.css("p.date").text
-    event.time = post.css("").text
-    event.type = post.css("p.category").text
-    event.detailed_description = post.css("").text
-  end
-end
+# def make_events
+#   self.get_events.each do |post|
+#     event = Event.new
+#     event.name = post.css("h1 a").text
+#     event.short_description = post.css("").text
+#     event.date = post.css("p.date").text
+#     event.time = post.css("").text
+#     event.type = post.css("p.category").text
+#     event.detailed_description = post.css("").text
+#   end
+# end
 
 end

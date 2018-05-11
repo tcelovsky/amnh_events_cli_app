@@ -5,7 +5,7 @@ attr_accessor :event, :name, :type, :date, :short_description, :url, :time, :loc
 
 def self.list
   self.make_events.each.with_index(1) do |event, i|
-    puts "#{i}. #{type}"
+    puts "#{i}. #{event.type}"
   end
   # puts "1. LECTURES AND TALKS"
   # puts "2. MEMBERS PROGRAMS"
@@ -15,7 +15,7 @@ def self.list
 end
 
 def self.make_events
-  self.get_page.each do |post|
+  self.get_events.each do |post|
     event = AmnhEventsCliApp::Events.new
     @@all << event
     event.type = @doc.css(".mod").first.css("p.category").text
@@ -37,6 +37,7 @@ def self.make_events
   # event_1.detailed_description = "Swirling disks of dust and gas surround young stars, and these disks contain the building blocks for new planets. It would take 100 million years to see a planet fully form, but luckily there are plenty of planetary systems in development for us to observe. By studying and compiling “snapshots” from nearby stars, Alycia Weinberger takes us on a journey back in time to the origins of planets."
 
   @@all
+  # binding.pry
 end
 
 def self.get_page
@@ -44,8 +45,8 @@ def self.get_page
   # binding.pry
 end
 
-# def self.get_events
-#   self.get_page.css(".mod").first
-# end
+def self.get_events
+  self.get_page.css(".mod").first
+end
 
 end

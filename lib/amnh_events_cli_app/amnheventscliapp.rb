@@ -30,8 +30,14 @@ def self.make_events
   # binding.pry
 end
 
+def self.list_types
+  self.make_events.uniq {|event| event.type}
+  # binding.pry
+end
+
 def self.list
-  self.make_events.each.with_index(1) do |event, i|
+  # binding.pry
+  self.list_types.each.with_index(1) do |event, i|
     puts "#{i}. #{event.type}"
   end
   # puts "1. LECTURES AND TALKS"

@@ -6,8 +6,8 @@ attr_accessor :event, :name, :type, :date, :short_description, :url, :time, :loc
 def self.list
   self.make_events
   @@all.each do |event|
-    if event.name
-      puts "#{event.name}"
+    if event.type
+      puts "#{event.type}"
     end
   end
   # puts "1. LECTURES AND TALKS"
@@ -20,12 +20,12 @@ end
 def self.make_events
   self.get_events.each do |post|
     @@all << event = AmnhEventsCliApp::Events.new
-    event.name = doc.css(".mod").first.css("a").text
-    event.short_description = doc.css(".mod").first.css("p").text
-    event.date = doc.css(".mod").first.css("p.date").text
-    event.time = post.css("").text
-    event.type = doc.css(".mod").first.css("p.category").text
-    event.detailed_description = post.css("").text
+    # event.name = doc.css(".mod").first.css("a").text
+    # event.short_description = doc.css(".mod").first.css("p").text
+    # event.date = doc.css(".mod").first.css("p.date").text
+    # event.time = post.css("").text
+    event.type = post.css("p.category").text
+    # event.detailed_description = post.css("").text
   end
 
   # @@all << event_1 = self.new
@@ -42,17 +42,13 @@ def self.make_events
   @@all
 end
 
-def all
-  @@all
-end
-
 def self.get_page
   doc = Nokogiri::HTML(open("https://www.amnh.org/calendar?facetsearch=1"))
   # binding.pry
 end
 
 def self.get_events
-  self.get_page.css(".mod part event")
+  self.get_page.css(".mod").first
 end
 
 end

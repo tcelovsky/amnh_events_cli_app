@@ -10,9 +10,6 @@ attr_accessor :events, :type
 
   def events
     @events = AmnhEventsCliApp::Events.list
-    @events.each.with_index(1) do |event, i|
-      puts "#{i}. #{event.type}"
-    end
   end
 
   def list_events

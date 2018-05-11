@@ -8,13 +8,9 @@ attr_accessor :events, :type
     goodbye
   end
 
-  def events
-    @events = AmnhEventsCliApp::Events.list
-  end
-
   def list_events
     puts "Here are types of upcoming events at the American Museum of Natural History (AMNH):"
-    events
+    AmnhEventsCliApp::Events.list
     puts
   end
 

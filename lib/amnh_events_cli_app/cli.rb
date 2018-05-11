@@ -23,7 +23,7 @@ attr_accessor :events, :type
     puts "Enter the number corresponding to the type of event you'd like more information on or type 'exit':"
     while input != "exit"
       input = gets.strip.downcase
-      if input.to_i > 0
+      if input.to_i.between?(1, AmnhEventsCliApp::Events.all.length)
         event = @events[input.to_i - 1]
           puts "#{event.name}:"
           puts "#{event.date}"

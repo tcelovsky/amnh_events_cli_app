@@ -19,7 +19,7 @@ def self.make_events
     event = AmnhEventsCliApp::Events.new
     @@all << event
     event.type = @doc.css(".mod").first.css("p.category").text
-    event.name = @doc.css(".mod").first.css("a").text
+    event.name = @doc.css(".mod").first.css("a").text.strip
     event.short_description = @doc.css(".mod").first.css("p").text
     event.date = @doc.css(".mod").first.css("p.date").text
     event.type = @doc.css(".mod").first.css("p.category").text
@@ -47,6 +47,7 @@ end
 
 def self.get_events
   self.get_page.css(".mod").first
+  # binding.pry
 end
 
 end

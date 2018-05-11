@@ -26,7 +26,8 @@ attr_accessor :events, :type
       if input.to_i > 0
         event = @events[input.to_i - 1]
           puts "#{event.name}:"
-          puts "#{event.short_description}"
+          puts "#{event.date}"
+          # puts "#{event.short_description}"
           puts "Type 'list' to see available types of events again or type 'exit':"
         # elsif input == "tickets"
         #   puts

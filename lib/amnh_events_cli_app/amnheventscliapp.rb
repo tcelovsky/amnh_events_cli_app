@@ -12,18 +12,19 @@ def self.get_page
 end
 
 def self.get_events
-  self.get_page.css(".mod").first
+  self.get_page.css(".mod.event")
   # binding.pry
 end
 
 def self.make_events
   self.get_events.each do |post|
     event = AmnhEventsCliApp::Events.new
+    # binding.pry
     @@all << event
-    event.type = @doc.css(".mod").first.css("p.category").text
-    event.name = @doc.css(".mod").first.css("a").text.strip
-    event.date = @doc.css(".mod").first.css("p.date").text
-    event.short_description = @doc.css(".mod").first.css("p").text
+    event.type = post.css("p.category").text
+    event.name = post.css("a").text.strip
+    event.date = post.css("p.date").text
+    event.short_description = post.css("p").text
   end
   self.all
   # binding.pry

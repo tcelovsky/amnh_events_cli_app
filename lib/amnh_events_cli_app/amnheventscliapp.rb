@@ -22,8 +22,8 @@ def self.make_events
     @@all << event
     event.type = @doc.css(".mod").first.css("p.category").text
     event.name = @doc.css(".mod").first.css("a").text.strip
-    event.short_description = @doc.css(".mod").first.css("p").text
     event.date = @doc.css(".mod").first.css("p.date").text
+    event.short_description = @doc.css(".mod").first.css("p").text
   end
   self.all
   # binding.pry

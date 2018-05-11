@@ -23,12 +23,12 @@ attr_accessor :events
     
     while input != "exit"
       input = gets.strip.downcase
-      if input.to_i.between?(1, AmnhEventsCliApp::Events.make_events.length)
+      if input.to_i.between?(1, AmnhEventsCliApp::Events.list_types.length)
         event = @events[input.to_i - 1]
           puts "#{event.name}:"
           puts "#{event.date}"
-          # puts "#{event.short_description}"
-          puts "For additional information, go to https://www.amnh.org/#{event.url}"
+          puts "#{event.short_description}"
+          puts "For additional information and to purchase tickets, go to https://www.amnh.org/#{event.url}"
           puts "Type 'list' to see available types of events again or type 'exit':"
       elsif input == "list"
         list_events

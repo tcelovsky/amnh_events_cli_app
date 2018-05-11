@@ -21,30 +21,24 @@ attr_accessor :events, :type
   def menu
     input = nil
     puts "Enter the number corresponding to the type of event you'd like more information on or type 'exit':"
-    puts
     while input != "exit"
       input = gets.strip.downcase
       if input.to_i > 0
         event = @events[input.to_i - 1]
-        puts
           puts "#{event.name}:"
-          puts "#{event.date} - #{event.time}"
           puts "#{event.short_description}"
-          puts
-          puts "For information about tickets type 'tickets'; for detailed description of event type 'description'. Type 'list' to see available types of events again or type 'exit':"
-          puts
-        elsif input == "tickets"
-          puts
-          puts "#{event.tickets}"
-          puts
-        elsif input == "description"
-          puts
-          puts "#{event.detailed_description}"
-          puts
+          puts "Type 'list' to see available types of events again or type 'exit':"
+        # elsif input == "tickets"
+        #   puts
+        #   puts "#{event.tickets}"
+        #   puts
+        # elsif input == "description"
+        #   puts
+        #   puts "#{event.detailed_description}"
+        #   puts
       elsif input == "list"
         list_events
       else puts "Type 'list' to see available types of events again or type 'exit':"
-        puts
       end
     end
   end

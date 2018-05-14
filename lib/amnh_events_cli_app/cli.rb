@@ -3,18 +3,18 @@ attr_accessor :events
 
   def call
     puts "Welcome!"
-    list_events
+    list_types
     menu
     goodbye
   end
 
-  def event_types
-    @event_types = AmnhEventsCliApp::Events.print_types
-  end
+  # def list_types
+  #   @event_types = AmnhEventsCliApp::Events.print_types
+  # end
 
-  def list_events
+  def list_types
     puts "Here are types of upcoming events at the American Museum of Natural History (AMNH):"
-    event_types
+    @event_types = AmnhEventsCliApp::Events.print_types
     puts "Enter the number corresponding to the type of event you'd like more information on or type 'exit':"
   end
 
@@ -31,7 +31,7 @@ attr_accessor :events
           puts "For additional information and to purchase tickets, go to https://www.amnh.org/#{event.url}"
           puts "Type 'list' to see available types of events again or type 'exit':"
       elsif input == "list"
-        list_events
+        list_types
         "Enter the number corresponding to the type of event you'd like more information on or type 'exit':"
       else puts "Type 'list' to see available types of events again or type 'exit':"
       end

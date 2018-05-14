@@ -8,13 +8,13 @@ attr_accessor :events
     goodbye
   end
 
-  def events
-    @events = AmnhEventsCliApp::Events.print_types
+  def event_types
+    @event_types = AmnhEventsCliApp::Events.print_types
   end
 
   def list_events
     puts "Here are types of upcoming events at the American Museum of Natural History (AMNH):"
-    events
+    event_types
     puts "Enter the number corresponding to the type of event you'd like more information on or type 'exit':"
   end
 
@@ -23,7 +23,8 @@ attr_accessor :events
     while input != "exit"
       input = gets.strip.downcase
       if input.to_i.between?(1, AmnhEventsCliApp::Events.list_types.length)
-        event = @events[input.to_i - 1]
+        event = @event_types[input.to_i - 1]
+        # binding.pry
           puts "#{event.name}:"
           puts "#{event.date}"
           puts "#{event.short_description}"

@@ -1,6 +1,6 @@
 AMNH Events CLI App:
 
-This is a CLI gem that scrapes the Calendar page of the American Museum of Natural History ("AMNH") (url = https://www.amnh.org/calendar?facetsearch=1) and returns list of upcoming events based on event type chosen by user.
+This is a CLI gem that scrapes the Calendar page of the American Museum of Natural History ("AMNH") (url = https://www.amnh.org/calendar?facetsearch=1) and returns a list of upcoming events based on event type chosen by user.
 
 ## Installation
 

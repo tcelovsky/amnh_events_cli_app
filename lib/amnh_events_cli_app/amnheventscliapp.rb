@@ -1,5 +1,5 @@
 class AmnhEventsCliApp::Events
-attr_accessor :event, :name, :type, :date, :short_description, :url_text, :url, :time, :location, :tickets, :detailed_description
+attr_accessor :event, :name, :type, :date, :short_description, :url_text, :url, :time, :location, :tickets, :detailed_description, :sorted_events
 @@all = []
 
 def self.all
@@ -35,7 +35,9 @@ def self.make_events
 end
 
 def self.sort_events
-  self.make_events.sort_by! {|event| event.type}
+  self.make_events
+  self.all.sort_by! {|event| event.type}
+  # binding.pry
 end
 
 def self.make_types

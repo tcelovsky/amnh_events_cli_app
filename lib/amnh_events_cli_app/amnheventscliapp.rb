@@ -34,7 +34,6 @@ end
 
 def self.sort_events
   self.make_events.sort_by! {|event| event.type}
-  # binding.pry
 end
 
 def self.make_types

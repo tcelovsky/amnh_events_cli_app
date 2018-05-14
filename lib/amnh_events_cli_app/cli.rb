@@ -13,8 +13,9 @@ class AmnhEventsCliApp::CLI
     puts "Enter the number corresponding to the type of event you'd like more information on or type 'exit':"
   end
 
-def list_events
-  @events = AmnhEventsCliApp::Events.sort_events
+def list_events(type)
+  @events = AmnhEventsCliApp::Events.sort_events.collect {|type| type}
+  # binding.pry
 end
 
   def menu
@@ -22,13 +23,16 @@ end
     while input != "exit"
       input = gets.strip.downcase
       if input.to_i.between?(1, AmnhEventsCliApp::Events.make_types.length)
-        event = list_events[input.to_i - 1]
+        type = @event_types[input.to_i - 1].type
         # binding.pry
-          puts "#{event.name}:"
-          puts "#{event.date}"
+        list_events(type).each do |event|
+        # binding.pry
+          puts "#{event.date} - #{event.name}:"
           puts "#{event.short_description}"
           puts "For additional information and to purchase tickets, go to https://www.amnh.org/#{event.url}"
-          puts "Type 'list' to see available types of events again or type 'exit':"
+          puts
+        end
+        puts "Type 'list' to see available types of events again or type 'exit':"
       elsif input == "list"
         list_types
         "Enter the number corresponding to the type of event you'd like more information on or type 'exit':"

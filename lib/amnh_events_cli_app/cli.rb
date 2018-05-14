@@ -9,7 +9,7 @@ attr_accessor :events
   end
 
   def events
-    @events = AmnhEventsCliApp::Events.list
+    @events = AmnhEventsCliApp::Events.print_types
   end
 
   def list_events

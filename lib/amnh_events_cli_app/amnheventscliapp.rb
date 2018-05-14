@@ -38,7 +38,7 @@ def self.list_types
   # binding.pry
 end
 
-def self.list
+def self.print_types
   # binding.pry
   self.list_types.each.with_index(1) do |event, i|
     puts "#{i}. #{event.type}"

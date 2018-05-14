@@ -25,8 +25,7 @@ def self.make_events
     event.name = post.css("a").text.strip
     event.date = post.css("p.date").text
     event.short_description = post.css("p").text
-    event.url_text = post.css("a").first["href"]
-    event.url = event.url_text.gsub(URI.regexp, '<a href="\0">\0</a>')
+    event.url = post.css("a").first["href"]
     # binding.pry
   end
   self.all

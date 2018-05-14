@@ -22,7 +22,7 @@ attr_accessor :events
     input = nil
     while input != "exit"
       input = gets.strip.downcase
-      if input.to_i.between?(1, AmnhEventsCliApp::Events.list_types.length)
+      if input.to_i.between?(1, AmnhEventsCliApp::Events.make_types.length)
         event = @event_types[input.to_i - 1]
         # binding.pry
           puts "#{event.name}:"

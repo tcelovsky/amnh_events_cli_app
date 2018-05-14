@@ -14,7 +14,7 @@ class AmnhEventsCliApp::CLI
   end
 
 def list_events(type)
-  @events = AmnhEventsCliApp::Events.sort_events.collect {|type| type}
+  @events = AmnhEventsCliApp::Events.sort_events.select {|event| event.type == type}
   # binding.pry
 end
 

@@ -24,7 +24,9 @@ def self.make_events
     event.type = post.css("p.category").text
     event.name = post.css("a").text.strip
     event.date = post.css("p.date").text
-    event.short_description = post.css("p").text
+    text = post.css("p").text
+    event.short_description = text.to_s.gsub(/#{event.date}/,"").gsub(/#{event.type}/,"").gsub(" Members Only","").gsub(" Sold Out","").gsub(" Free With Museum Admission","").gsub("â"," ")  
+    # binding.pry
     event.url = post.css("a").first["href"]
     # binding.pry
   end

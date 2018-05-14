@@ -5,6 +5,3 @@ require 'nokogiri'
 require 'pry'
 require 'open-uri'
 
-module AmnhEventsCliApp
-  # Your code goes here...
-end

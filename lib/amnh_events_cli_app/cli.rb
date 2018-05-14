@@ -16,7 +16,6 @@ class AmnhEventsCliApp::CLI
 def list_events(type)
   @events = AmnhEventsCliApp::Events.sort_events.select {|event| event.type == type}
   @events.uniq {|event| event.name}
-  # binding.pry
 end
 
   def menu
@@ -25,9 +24,7 @@ end
       input = gets.strip.downcase
       if input.to_i.between?(1, AmnhEventsCliApp::Events.make_types.length)
         type = @event_types[input.to_i - 1].type
-        # binding.pry
         list_events(type).each do |event|
-        # binding.pry
           puts "#{event.date} - #{event.name}:"
           puts "#{event.short_description}"
           puts "For additional information and to purchase tickets, go to https://www.amnh.org/#{event.url}"

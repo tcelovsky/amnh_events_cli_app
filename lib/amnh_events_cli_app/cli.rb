@@ -1,5 +1,4 @@
 class AmnhEventsCliApp::CLI
-attr_accessor :events
 
   def call
     puts "Welcome!"
@@ -14,8 +13,8 @@ attr_accessor :events
     puts "Enter the number corresponding to the type of event you'd like more information on or type 'exit':"
   end
 
-def list_events(type)
-  @events = AmnhEventsCliApp::Events.make_events(event.type)
+def list_events
+  @events = AmnhEventsCliApp::Events.sort_events
 end
 
   def menu
@@ -23,7 +22,7 @@ end
     while input != "exit"
       input = gets.strip.downcase
       if input.to_i.between?(1, AmnhEventsCliApp::Events.make_types.length)
-        event = @event_types[input.to_i - 1]
+        event = list_events[input.to_i - 1]
         # binding.pry
           puts "#{event.name}:"
           puts "#{event.date}"

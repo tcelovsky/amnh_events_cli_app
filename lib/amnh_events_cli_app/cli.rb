@@ -14,6 +14,10 @@ attr_accessor :events
     puts "Enter the number corresponding to the type of event you'd like more information on or type 'exit':"
   end
 
+def list_events(type)
+  @events = AmnhEventsCliApp::Events.make_events(event.type)
+end
+
   def menu
     input = nil
     while input != "exit"

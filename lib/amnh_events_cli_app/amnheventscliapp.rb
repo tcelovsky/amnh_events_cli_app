@@ -33,9 +33,13 @@ def self.make_events
   # binding.pry
 end
 
-def self.make_types
-  self.make_events.uniq {|event| event.type}
+def self.sort_types
+  self.make_events.sort_by! {|event| event.type}
   # binding.pry
+end
+
+def self.make_types
+  self.sort_types.uniq {|event| event.type}
 end
 
 def self.print_types

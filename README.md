@@ -1,8 +1,6 @@
-# AmnhEventsCliApp
+AMNH Events CLI App:
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/amnh_events_cli_app`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is a CLI gem that scrapes the Calendar page of the American Museum of Natural History ("AMNH") (url = https://www.amnh.org/calendar?facetsearch=1) and returns list of upcoming events based on event type chosen by user.
 
 ## Installation
 

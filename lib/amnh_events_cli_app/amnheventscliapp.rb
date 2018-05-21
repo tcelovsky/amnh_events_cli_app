@@ -1,5 +1,6 @@
 class AmnhEventsCliApp::Events
-attr_accessor :event, :name, :type, :date, :short_description, :url_text, :url, :time, :location, :tickets, :detailed_description
+  attr_accessor :event, :name, :type, :date, :short_description, :url_text, :url, :time, :location, :tickets, :detailed_description
+
 @@all = []
 
 def self.all
@@ -7,7 +8,12 @@ def self.all
 end
 
 def self.get_page
-  @doc = Nokogiri::HTML(open("https://www.amnh.org/calendar?facetsearch=1"))
+  # ||=  => "make the assingment unliss the variable already has a value"
+  @@doc ||= scrape
+end
+
+def self.scrape
+  Nokogiri::HTML(open("https://www.amnh.org/calendar?facetsearch=1"))
 end
 
 def self.get_events
@@ -22,7 +28,7 @@ def self.make_events
     event.name = post.css("a").text.strip
     event.date = post.css("p.date").text
     text = post.css("p").text
-    event.short_description = text.to_s.gsub(/#{event.date}/,"").gsub(/#{event.type}/,"").gsub(" Members Only","").gsub(" Sold Out","").gsub(" Free With Museum Admission","").gsub("â"," ")  
+    event.short_description = text.to_s.gsub(/#{event.date}/,"").gsub(/#{event.type}/,"").gsub(" Members Only","").gsub(" Sold Out","").gsub(" Free With Museum Admission","").gsub("â"," ")
     event.url = post.css("a").first["href"]
   end
   self.all

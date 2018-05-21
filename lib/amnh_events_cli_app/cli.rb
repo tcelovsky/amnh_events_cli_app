@@ -7,16 +7,22 @@ class AmnhEventsCliApp::CLI
     goodbye
   end
 
+  def print_types
+    AmnhEventsCliApp::Events.make_types.each.with_index(1) do |event, i|
+      puts "#{i}. #{event.type}"
+    end
+  end
+
   def list_types
     puts "Here are types of upcoming events at the American Museum of Natural History (AMNH):"
-    @event_types = AmnhEventsCliApp::Events.print_types
+    @event_types = print_types
     puts "Enter the number corresponding to the type of event you'd like more information on or type 'exit':"
   end
 
-def list_events(type)
-  @events = AmnhEventsCliApp::Events.sort_events.select {|event| event.type == type}
-  @events.uniq {|event| event.name}
-end
+  def list_events(type)
+    @events = AmnhEventsCliApp::Events.sort_events.select {|event| event.type == type}
+    @events.uniq {|event| event.name}
+  end
 
   def menu
     input = nil

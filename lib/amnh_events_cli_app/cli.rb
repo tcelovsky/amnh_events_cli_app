@@ -2,10 +2,16 @@ class AmnhEventsCliApp::CLI
 
   def call
     puts "Welcome!"
+    # here, we could scrape all our info, maybe with a method called #scrape_events
     list_types
     menu
     goodbye
   end
+
+  # scrape method:
+  # def scrape_events
+    # here is where we would make our one and only scrape call to Scraper.scrape
+  # end
 
   def print_types
     AmnhEventsCliApp::Events.make_types.each.with_index(1) do |event, i|
@@ -20,6 +26,7 @@ class AmnhEventsCliApp::CLI
   end
 
   def list_events(type)
+    # could we build a .find_by_type method in the Event class?
     @events = AmnhEventsCliApp::Events.sort_events.select {|event| event.type == type}
     @events.uniq {|event| event.name}
   end

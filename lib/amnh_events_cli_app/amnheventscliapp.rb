@@ -7,6 +7,8 @@ class AmnhEventsCliApp::Events
     @@all
   end
 
+  # we could eliminate this method from the Event class and just call the
+  # scrape method from the CLI#call method....
   def self.get_events
     AmnhEventsCliApp::Scraper.get_page.css(".mod.event")
   end
@@ -22,6 +24,9 @@ class AmnhEventsCliApp::Events
       event.short_description = text.to_s.gsub(/#{event.date}/,"").gsub(/#{event.type}/,"").gsub(" Members Only","").gsub(" Sold Out","").gsub(" Free With Museum Admission","").gsub("â"," ")
       event.url = post.css("a").first["href"]
     end
+
+    # we really don't need to return self.all here, since we already have a method to do that (.all)
+    # then, anywhere we need to access all the Events we can just call Event.all
     self.all
   end
 
